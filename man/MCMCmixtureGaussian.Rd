@@ -2,7 +2,7 @@
 % Please edit documentation in R/MCMCmixtureGaussian.R
 \name{MCMCmixtureGaussian}
 \alias{MCMCmixtureGaussian}
-\title{MCMC for Bimodal Mixtureof 2 Univariate Distributions}
+\title{MCMC mixture Gaussian}
 \usage{
 MCMCmixtureGaussian(mean1, mean2, var1, var2, nsim)
 }
@@ -17,6 +17,16 @@ MCMCmixtureGaussian(mean1, mean2, var1, var2, nsim)
 
 \item{nsim}{number of values to be simulated from the mixture distribution}
 }
+\value{
+vector of simulated values from the target distribution
+}
 \description{
-MCMC for Bimodal Mixtureof 2 Univariate Distributions
+MCMCmixtureGaussian function simulate
+random variables from a Univariate Gaussian Mixture Distribution. The means and variances of the 2
+Gaussian distributions and the mixing parameter that form the target mixture distribution will be taken
+as input from the user, along with the number of values to be simulated.
+}
+\examples{
+MCMCmixtureGaussian(mean1, mean2, var1, var2, nsim)
+
 }
