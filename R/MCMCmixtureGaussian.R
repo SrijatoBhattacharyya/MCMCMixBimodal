@@ -38,8 +38,11 @@ MCMCmixtureGaussian <- function(mean1, mean2, var1, var2, alpha, nsim){
     X[1]=t
     for(i in 2:Nsim)
     {
+      # Code for Proposal Density
       W=rnorm(1,( alpha * mean2) + ((1 - alpha) * X[i-1]), 5)
       V=rnorm(1,(alpha * mean1) + ((1 - alpha) * X[i-1]), 5)
+
+      # Adjusting the proposal density based on the location of the previously iterated value
       if(abs(X[i-1] - mean1) < abs(X[i-1] - mean2))
       {
         Y=W
@@ -48,7 +51,10 @@ MCMCmixtureGaussian <- function(mean1, mean2, var1, var2, alpha, nsim){
       {
         Y=V
       }
-      rho=f(Y) / f(X[i-1])
+
+
+      rho = f(Y) / f(X[i-1])    # defined the rate parameter for Metropolis Hastings Algorithm
+
       if(runif(1) < rho)
       {
         X[i] = Y
