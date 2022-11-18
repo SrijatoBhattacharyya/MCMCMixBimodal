@@ -31,6 +31,9 @@ MCMCmixtureGaussian <- function(mean1, mean2, var1, var2, alpha, nsim){
   n=1000                              # declared number of replications of the chain
   X=rep(0, times=Nsim)                #initialized vector to store chain values
 
+  mean11 = min(mean1, mean2)
+  mean22 = max(mean1, mean2)
+
   #function to generate Markov chain
 
   h <- function(t)
@@ -39,11 +42,11 @@ MCMCmixtureGaussian <- function(mean1, mean2, var1, var2, alpha, nsim){
     for(i in 2:Nsim)
     {
       # Code for Proposal Density
-      W=rnorm(1,( alpha * mean2) + ((1 - alpha) * X[i-1]), 5)
-      V=rnorm(1,(alpha * mean1) + ((1 - alpha) * X[i-1]), 5)
+      W=rnorm(1,( alpha * mean22) + ((1 - alpha) * X[i-1]), 5)
+      V=rnorm(1,(alpha * mean11) + ((1 - alpha) * X[i-1]), 5)
 
       # Adjusting the proposal density based on the location of the previously iterated value
-      if(abs(X[i-1] - mean1) < abs(X[i-1] - mean2))
+      if(abs(X[i-1] - mean11) < abs(X[i-1] - mean22))
       {
         Y=W
       }
@@ -69,7 +72,8 @@ MCMCmixtureGaussian <- function(mean1, mean2, var1, var2, alpha, nsim){
   Z=do.call("rbind",replicate(n, h(mean1), simplify = F))
   R=Z[,500]
 
+  #histogram of generated values along with the density curve
   hist(R, breaks=70, prob=T)
-  curve(f(x), mean1 - 3*var1, mean2 + 3*var2, add=T)
+  curve(f(x), mean11 - 3*var1, mean22 + 3*var2, add=T)
 }
 
