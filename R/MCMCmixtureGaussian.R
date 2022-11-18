@@ -38,7 +38,9 @@ MCMCmixtureGaussian <- function(mean1, mean2, var1, var2, alpha, nsim){
 
   h <- function(t)
   {
-    X[1]=t
+
+    X[1]=t                  #Initialized the chain
+
     for(i in 2:Nsim)
     {
       # Code for Proposal Density
@@ -58,6 +60,7 @@ MCMCmixtureGaussian <- function(mean1, mean2, var1, var2, alpha, nsim){
 
       rho = f(Y) / f(X[i-1])    # defined the rate parameter for Metropolis Hastings Algorithm
 
+      # stored the next iterated value of the chain
       if(runif(1) < rho)
       {
         X[i] = Y
