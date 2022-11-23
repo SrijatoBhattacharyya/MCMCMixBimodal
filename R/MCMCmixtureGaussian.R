@@ -3,6 +3,27 @@
 #---------------------------------------------#
 
 
+#' target_density
+#'
+#'
+#' target_density gives the value of the density of a univariate Bimodal Gaussian Mixture Distribution. The means and variances of the 2
+#' Gaussian distributions and the mixing parameter are taken as input from the user.
+#'
+#'
+#'
+#' @param x     argument value of the density function
+#' @param mean1 mean of 1st univariate gaussian distribution
+#' @param mean2 mean of 2nd univariate gaussian distribution
+#' @param var1  variance of 1st univariate gaussian distribution
+#' @param var2  variance of 2nd univariate gaussian distribution
+#' @param alpha value of mixing parameter
+#'
+#' @return value of the density function at x
+#'
+#'
+#' @examples
+#'
+#'
 target_density <- function(x, mean1, mean2, var1, var2, alpha) {
   W <- alpha * stats::dnorm(x, mean1, var1)
   V <- (1 - alpha) * stats::dnorm(x, mean2, var2)
