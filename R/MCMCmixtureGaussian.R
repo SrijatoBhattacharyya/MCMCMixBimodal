@@ -13,6 +13,32 @@ target_density <- function(x, mean1, mean2, var1, var2, alpha) {
 # function to generate Markov chain
 #-----------------------------------------------#
 
+#' chain
+#'
+#' chain simulates random variables from a Markov Chain having stationery distribution as
+#' a univariate Bimodal Gaussian Mixture Distribution. The means and variances of the 2
+#' Gaussian distributions and the mixing parameter that form the target mixture distribution will be taken
+#' as input from the user, along with the number of values to be simulated. The function returns
+#' the values generated from the chain
+#'
+#'
+#'
+#'
+#' @param mean1 mean of 1st univariate gaussian distribution
+#' @param mean2 mean of 2nd univariate gaussian distribution
+#' @param var1  variance of 1st univariate gaussian distribution
+#' @param var2  variance of 2nd univariate gaussian distribution
+#' @param alpha mixture proportion of the normal density with smaller mean
+#' @param t starting value of the chain
+#' @param Nsim  number of values to be simulated from the mixture distribution
+#'
+#'
+#' @return vector of simulated values from the target distribution
+#' @export
+#'
+#' @examples
+#' chain(2, 1, 10, 2, 3, 0.3, 1000)
+#'
 
 chain <- function(t, mean1, mean2, var1, var2, alpha, Nsim) {
   X <- rep(0, Nsim)
@@ -59,9 +85,10 @@ chain <- function(t, mean1, mean2, var1, var2, alpha, Nsim) {
 #' MCMC mixture Gaussian
 #'
 #' MCMCmixtureGaussian function simulate
-#' random variables from a Univariate Gaussian Mixture Distribution. The means and variances of the 2
+#' random variables from a Univariate Bimodal Gaussian Mixture Distribution. The means and variances of the 2
 #' Gaussian distributions and the mixing parameter that form the target mixture distribution will be taken
-#' as input from the user, along with the number of values to be simulated.
+#' as input from the user, along with the number of values to be simulated. This function generates 1000 replications
+#' of the markov chain with stationery distribution as the target distribution and plots the histogram of the values produced.
 #'
 #' @param mean1 mean of 1st univariate gaussian distribution
 #' @param mean2 mean of 2nd univariate gaussian distribution
