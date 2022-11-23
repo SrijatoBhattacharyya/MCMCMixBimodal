@@ -31,7 +31,4 @@ as input from the user, along with the number of values to be simulated.
 \examples{
 MCMCmixtureGaussian(1, 10, 2, 3, 0.3, 1000)
 
-
-
-
 }

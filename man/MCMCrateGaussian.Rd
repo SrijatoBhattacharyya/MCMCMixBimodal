@@ -31,5 +31,4 @@ target distribution at each iteration.
 \examples{
 MCMCrateGaussian(mean1, mean2, var1, var2, nsim)
 
-
 }

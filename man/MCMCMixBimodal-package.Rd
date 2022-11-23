@@ -4,9 +4,9 @@
 \name{MCMCMixBimodal-package}
 \alias{MCMCMixBimodal}
 \alias{MCMCMixBimodal-package}
-\title{MCMCMixBimodal: : MCMC for Bimodal Mixture of 2 Univariate Distributions}
+\title{MCMCMixBimodal: : MCMC for Bimodal Mixture of Two Univariate Dstributions}
 \description{
-What the package does (one paragraph).
+MCMCixBimodal simulates random variables from a Univariate Gaussian Mixture Distribution. The means and variances of the 2 Gaussian distributions and the mixing parameter that form the target mixture distribution are taken as input from the user, along with the number of values to be simulated. This package performs an effective MCMC technique that uses a specially customised proposal density to simulate random variables from the target distribution and plot their histogram, using Metropolis-Hastings Algorithm. The convergence rate of the algorithm is studied by the package using relevant plots.
 }
 \author{
 \strong{Maintainer}: Srijato Bhattacharyya \email{srijato@tamu.edu}

@@ -19,9 +19,6 @@
 #'
 #' @examples MCMCrateGaussian(mean1, mean2, var1, var2, nsim)
 #'
-#'
-MCMCrateGaussian <- function(mean1, mean2, var1, var2, nsim){
-
+MCMCrateGaussian <- function(mean1, mean2, var1, var2, nsim) {
   return(0)
-
 }
