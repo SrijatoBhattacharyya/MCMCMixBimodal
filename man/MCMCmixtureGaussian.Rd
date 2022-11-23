@@ -4,7 +4,7 @@
 \alias{MCMCmixtureGaussian}
 \title{MCMC mixture Gaussian}
 \usage{
-MCMCmixtureGaussian(mean1, mean2, var1, var2, nsim)
+MCMCmixtureGaussian(mean1, mean2, var1, var2, alpha, Nsim)
 }
 \arguments{
 \item{mean1}{mean of 1st univariate gaussian distribution}
@@ -15,7 +15,9 @@ MCMCmixtureGaussian(mean1, mean2, var1, var2, nsim)
 
 \item{var2}{variance of 2nd univariate gaussian distribution}
 
-\item{nsim}{number of values to be simulated from the mixture distribution}
+\item{alpha}{mixture proportion of the normal density with smaller mean}
+
+\item{Nsim}{number of values to be simulated from the mixture distribution}
 }
 \value{
 vector of simulated values from the target distribution
@@ -27,6 +29,9 @@ Gaussian distributions and the mixing parameter that form the target mixture dis
 as input from the user, along with the number of values to be simulated.
 }
 \examples{
-MCMCmixtureGaussian(mean1, mean2, var1, var2, nsim)
+MCMCmixtureGaussian(1, 10, 2, 3, 0.3, 1000)
+
+
+
 
 }
