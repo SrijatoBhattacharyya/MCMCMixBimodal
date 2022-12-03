@@ -4,7 +4,7 @@
 \alias{MCMCrateGaussian}
 \title{MCMC rate Gaussian}
 \usage{
-MCMCrateGaussian(mean1, mean2, var1, var2, nsim)
+MCMCrateGaussian(mean1, mean2, var1, var2, alpha, Nsim)
 }
 \arguments{
 \item{mean1}{mean of 1st univariate gaussian distribution}
@@ -15,7 +15,9 @@ MCMCrateGaussian(mean1, mean2, var1, var2, nsim)
 
 \item{var2}{variance of 2nd univariate gaussian distribution}
 
-\item{nsim}{number of values to be simulated from the mixture distribution}
+\item{alpha}{value of mixing parameter}
+
+\item{Nsim}{number of values to be simulated from the mixture distribution}
 }
 \value{
 plot of supremum of the absolute
@@ -29,6 +31,6 @@ difference between the empirical CDF of the 500 generated values of the chain an
 target distribution at each iteration.
 }
 \examples{
-MCMCrateGaussian(mean1, mean2, var1, var2, nsim)
+MCMCrateGaussian(mean1 = 20, mean2 = 0, var1= 1, var2 = 2, alpha= 0.5, Nsim= 1000)
 
 }
