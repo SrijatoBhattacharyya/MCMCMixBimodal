@@ -31,5 +31,8 @@ of the markov chain with stationery distribution as the target distribution and 
 }
 \examples{
 MCMCmixtureGaussian(1, 10, 2, 3, 0.3, 1000)
+MCMCmixtureGaussian(-10, 20, 10, 5, 0.6, 1000)
+MCMCmixtureGaussian(-10, 20, 10, 10, 0.5, 1000)
+
 
 }

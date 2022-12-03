@@ -33,5 +33,6 @@ the values generated from the chain
 }
 \examples{
 chain(2, 1, 10, 2, 3, 0.3, 1000)
-
+chain(5, 4, 3, 3, 3, 0.5, 1000)
+chain(-3, -2, -4, 2, 2, 0.9, 1000)
 }

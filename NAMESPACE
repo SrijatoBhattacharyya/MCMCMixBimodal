@@ -3,3 +3,4 @@
 export(MCMCmixtureGaussian)
 export(MCMCrateGaussian)
 export(chain)
+export(target_density)

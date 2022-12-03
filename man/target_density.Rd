@@ -26,3 +26,8 @@ value of the density function at x
 target_density gives the value of the density of a univariate Bimodal Gaussian Mixture Distribution. The means and variances of the 2
 Gaussian distributions and the mixing parameter are taken as input from the user.
 }
+\examples{
+target_density(x = 1, mean1 = 5, mean2 = 0, var1 = 3, var2 = 1, alpha = 0.5)
+target_density(x = 8, mean1 = 2, mean2 = 7, var1 = 2, var2 = 1, alpha = 0.1)
+
+}
