@@ -4,20 +4,22 @@
 \alias{target_density}
 \title{target_density}
 \usage{
-target_density(x, mean1, mean2, var1, var2, alpha)
+target_density(x, m1, m2, s1, s2, alpha, density = "Normal")
 }
 \arguments{
 \item{x}{argument value of the density function}
 
-\item{mean1}{mean of 1st univariate gaussian distribution}
+\item{m1}{mean of 1st univariate gaussian distribution}
 
-\item{mean2}{mean of 2nd univariate gaussian distribution}
+\item{m2}{mean of 2nd univariate gaussian distribution}
 
-\item{var1}{variance of 1st univariate gaussian distribution}
+\item{s1}{variance of 1st univariate gaussian distribution}
 
-\item{var2}{variance of 2nd univariate gaussian distribution}
+\item{s2}{variance of 2nd univariate gaussian distribution}
 
 \item{alpha}{value of mixing parameter}
+
+\item{density}{specifies the density function as either Normal or Cauchy}
 }
 \value{
 value of the density function at x
@@ -27,7 +29,8 @@ target_density gives the value of the density of a univariate Bimodal Gaussian M
 Gaussian distributions and the mixing parameter are taken as input from the user.
 }
 \examples{
-target_density(x = 1, mean1 = 5, mean2 = 0, var1 = 3, var2 = 1, alpha = 0.5)
-target_density(x = 8, mean1 = 2, mean2 = 7, var1 = 2, var2 = 1, alpha = 0.1)
+target_density(x = 1, m1 = 5, m2 = 0, s1 = 3, s2 = 1, alpha = 0.5, density = "Normal")
+target_density(x = 8, m1 = 2, m2 = 7, s1 = 2, s2 = 1, alpha = 0.1, density = "Normal")
+target_density(x = 7, m1 = 5, m2 = 1, s1 = 3, s2 = 2, alpha = 0.3, density = "Cauchy")
 
 }

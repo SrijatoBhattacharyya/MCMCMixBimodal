@@ -12,24 +12,37 @@
 #'
 #'
 #' @param x     argument value of the density function
-#' @param mean1 mean of 1st univariate gaussian distribution
-#' @param mean2 mean of 2nd univariate gaussian distribution
-#' @param var1  variance of 1st univariate gaussian distribution
-#' @param var2  variance of 2nd univariate gaussian distribution
+#' @param m1 mean of 1st univariate gaussian distribution
+#' @param m2 mean of 2nd univariate gaussian distribution
+#' @param s1  variance of 1st univariate gaussian distribution
+#' @param s2  variance of 2nd univariate gaussian distribution
 #' @param alpha value of mixing parameter
+#' @param density specifies the density function as either Normal or Cauchy
 #'
 #' @return value of the density function at x
 #' @export
 #'
 #' @examples
-#' target_density(x = 1, mean1 = 5, mean2 = 0, var1 = 3, var2 = 1, alpha = 0.5)
-#' target_density(x = 8, mean1 = 2, mean2 = 7, var1 = 2, var2 = 1, alpha = 0.1)
+#' target_density(x = 1, m1 = 5, m2 = 0, s1 = 3, s2 = 1, alpha = 0.5, density = "Normal")
+#' target_density(x = 8, m1 = 2, m2 = 7, s1 = 2, s2 = 1, alpha = 0.1, density = "Normal")
+#'target_density(x = 7, m1 = 5, m2 = 1, s1 = 3, s2 = 2, alpha = 0.3, density = "Cauchy")
 #'
-target_density <- function(x, mean1, mean2, var1, var2, alpha) {
-  W <- alpha * stats::dnorm(x, mean1, var1)
-  V <- (1 - alpha) * stats::dnorm(x, mean2, var2)
+target_density <- function(x, m1, m2, s1, s2, alpha, density = "Normal") {
+
+  if(density == "Cauchy"){
+    W <- alpha * stats::dcauchy(x, m1, s1)
+    V <- (1 - alpha) * stats::dcauchy(x, m2, s2)
+  }
+  else{
+    W <- alpha * stats::dnorm(x, m1, s1)
+    V <- (1 - alpha) * stats::dnorm(x, m2, s2)
+  }
   return(W + V)
 }
+
+
+
+
 
 
 #-----------------------------------------------#
