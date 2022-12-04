@@ -4,24 +4,26 @@
 \alias{MCMCrateGaussian}
 \title{MCMC rate Gaussian}
 \usage{
-MCMCrateGaussian(mean1, mean2, var1, var2, alpha, Nsim)
+MCMCrateGaussian(m1, m2, s1, s2, alpha, Nsim, density = "Normal")
 }
 \arguments{
-\item{mean1}{mean of 1st univariate gaussian distribution}
+\item{m1}{mean of 1st univariate gaussian distribution or median of 1st cauchy Distribution depending on value of density parameter}
 
-\item{mean2}{mean of 2nd univariate gaussian distribution}
+\item{m2}{mean of 2nd univariate gaussian distribution or median of 2nd cauchy Distribution depending on value of density parameter}
 
-\item{var1}{variance of 1st univariate gaussian distribution}
+\item{s1}{variance of 1st univariate gaussian distribution or scale parameter of 1st Cauchy Distribution depending on value of density parameter}
 
-\item{var2}{variance of 2nd univariate gaussian distribution}
+\item{s2}{variance of 2nd univariate gaussian distribution or scale parameter of 2nd Cauchy Distribution depending on value of density parameter}
 
 \item{alpha}{value of mixing parameter}
 
 \item{Nsim}{number of values to be simulated from the mixture distribution}
+
+\item{density}{specifies the density function as either Normal or Cauchy}
 }
 \value{
-plot of supremum of the absolute
-difference between the empirical CDF of the 500 generated values of the chain and the actual CDF of the
+vector of supremum of the absolute difference between the empirical
+CDF of the 500 generated values of the chain and the actual CDF of the
 target distribution at each iteration.
 }
 \description{
@@ -31,6 +33,6 @@ difference between the empirical CDF of the 500 generated values of the chain an
 target distribution at each iteration.
 }
 \examples{
-MCMCrateGaussian(mean1 = 20, mean2 = 0, var1= 1, var2 = 2, alpha= 0.5, Nsim= 1000)
+MCMCrateGaussian(m1 = 20, m2 = 0, s1 = 1, s2 = 2, alpha= 0.5, Nsim= 1000)
 
 }
