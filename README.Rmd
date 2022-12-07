@@ -15,6 +15,7 @@ MCMCMixBimodal is a package that allows the user to to generate random variables
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/SrijatoBhattacharyya/MCMCMixBimodal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SrijatoBhattacharyya/MCMCMixBimodal/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/SrijatoBhattacharyya/MCMCMixBimodal/branch/main/graph/badge.svg)](https://app.codecov.io/gh/SrijatoBhattacharyya/MCMCMixBimodal?branch=main)
 <!-- badges: end -->
 
 ## Installation
