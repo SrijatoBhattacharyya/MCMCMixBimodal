@@ -28,6 +28,19 @@
 #' target_density(x = 7, m1 = 5, m2 = 1, s1 = 3, s2 = 2, alpha = 0.3, density = "Cauchy")
 #'
 target_density <- function(x, m1, m2, s1, s2, alpha, density = "Normal") {
+  if(s1 <= 0 ){
+    stop("Scale parameter cannot be non-positive; supply new scale parameter")
+  }
+  if(s2 <0 ){
+    stop("Scale parameter cannot be non-positive; supply new scale parameter")
+  }
+  if(alpha > 1 ){
+    stop("mixing parameter cannot be greater than 1")
+  }
+  if(alpha <0 ){
+    stop("mixing parameter cannot be negative")
+  }
+
   if (density == "Cauchy") {
     W <- alpha * stats::dcauchy(x, m1, s1)
     V <- (1 - alpha) * stats::dcauchy(x, m2, s2)
@@ -71,6 +84,11 @@ target_density <- function(x, m1, m2, s1, s2, alpha, density = "Normal") {
 #' chain(-3, -2, -4, 2, 2, 0.9, 1000, density = "Cauchy")
 #'
 chain <- function(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
+  if(Nsim <= 50 || Nsim %% 1 != 0){
+    stop("Please resupply positive value of Nsim that is greater than 50 ")
+  }
+
+
   X <- rep(0, Nsim)
   m11 <- min(m1, m2)
   m22 <- max(m1, m2)
@@ -130,8 +148,9 @@ chain <- function(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
 #' MCMCmixture function simulate
 #' random variables from a Univariate Bimodal Gaussian Mixture Distribution. The means and variances of the 2
 #' Gaussian distributions and the mixing parameter that form the target mixture distribution will be taken
-#' as input from the user, along with the number of values to be simulated. This function generates 1000 replications
-#' of the markov chain with stationery distribution as the target distribution and plots the histogram of the values produced.
+#' as input from the user, along with the iteration number of the Markov Chains to be simulated. This function generates 1000 replications
+#' of the markov chain with stationery distribution as the target distribution, returns the 1000-long vector of generated values at the Nsim-th
+#' iteration of each chain and plots the histogram of the values produced.
 #'
 #'
 #' @inheritParams target_density
@@ -142,8 +161,8 @@ chain <- function(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
 #'
 #' @examples
 #' MCMCmixture(1, 10, 2, 3, 0.3, 1000, density = "Normal")
-#' MCMCmixture(-10, 20, 10, 5, 0.6, 1000, density = "Normal")
-#' MCMCmixture(-1, 7, 1, 3, 0.5, 1000, density = "Cauchy")
+#' MCMCmixture(-10, 20, 10, 5, 0.6, 2000, density = "Normal")
+#' MCMCmixture(-1, 7, 1, 3, 0.5, 3000, density = "Cauchy")
 #'
 MCMCmixture <- function(m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
   m11 <- min(m1, m2)
@@ -153,7 +172,7 @@ MCMCmixture <- function(m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
 
 
   Z <- do.call("rbind", replicate(n, chain(m11, m1, m2, s1, s2, alpha, Nsim, density), simplify = F))
-  R <- Z[, 500]
+  R <- Z[, Nsim]
   x <- min(R) - 3:max(R) + 3
 
   # histogram of generated values along with the density curve
