@@ -25,15 +25,13 @@
 #' @examples
 #' target_density(x = 1, m1 = 5, m2 = 0, s1 = 3, s2 = 1, alpha = 0.5)
 #' target_density(x = 8, m1 = 2, m2 = 7, s1 = 2, s2 = 1, alpha = 0.1, density = "Normal")
-#'target_density(x = 7, m1 = 5, m2 = 1, s1 = 3, s2 = 2, alpha = 0.3, density = "Cauchy")
+#' target_density(x = 7, m1 = 5, m2 = 1, s1 = 3, s2 = 2, alpha = 0.3, density = "Cauchy")
 #'
 target_density <- function(x, m1, m2, s1, s2, alpha, density = "Normal") {
-
-  if(density == "Cauchy"){
+  if (density == "Cauchy") {
     W <- alpha * stats::dcauchy(x, m1, s1)
     V <- (1 - alpha) * stats::dcauchy(x, m2, s2)
-  }
-  else{
+  } else {
     W <- alpha * stats::dnorm(x, m1, s1)
     V <- (1 - alpha) * stats::dnorm(x, m2, s2)
   }
@@ -71,18 +69,18 @@ target_density <- function(x, m1, m2, s1, s2, alpha, density = "Normal") {
 #' chain(2, 1, 10, 2, 3, 0.3, 1000)
 #' chain(5, 4, 3, 3, 3, 0.5, 1000)
 #' chain(-3, -2, -4, 2, 2, 0.9, 1000, density = "Cauchy")
-
+#'
 chain <- function(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
   X <- rep(0, Nsim)
   m11 <- min(m1, m2)
   m22 <- max(m1, m2)
-  if(m11 == m1){
+  if (m11 == m1) {
     s11 <- s1
     s22 <- s2
-  }else{
-      s11 <- s2
-      s22 <- s1
-    }
+  } else {
+    s11 <- s2
+    s22 <- s1
+  }
 
   X[1] <- t # Initialized the chain
 
@@ -90,12 +88,11 @@ chain <- function(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
   for (i in 2:Nsim)
   {
     # Code for Proposal Density
-    if(density == "Cauchy"){
-      W <- stats::rcauchy(1, (alpha * m22) + ((1 - alpha) * X[i - 1]), s2 +  10)
+    if (density == "Cauchy") {
+      W <- stats::rcauchy(1, (alpha * m22) + ((1 - alpha) * X[i - 1]), s2 + 10)
       V <- stats::rcauchy(1, (alpha * m11) + ((1 - alpha) * X[i - 1]), s1 + 10)
-    }
-    else{
-      W <- stats::rnorm(1, (alpha * m22) + ((1 - alpha) * X[i - 1]), s2 +  10)
+    } else {
+      W <- stats::rnorm(1, (alpha * m22) + ((1 - alpha) * X[i - 1]), s2 + 10)
       V <- stats::rnorm(1, (alpha * m11) + ((1 - alpha) * X[i - 1]), s1 + 10)
     }
 
@@ -146,10 +143,9 @@ chain <- function(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
 #' @examples
 #' MCMCmixture(1, 10, 2, 3, 0.3, 1000, density = "Normal")
 #' MCMCmixture(-10, 20, 10, 5, 0.6, 1000, density = "Normal")
-#' MCMCmixture(-10, 20, 10, 10, 0.5, 1000, density = "Cauchy")
+#' MCMCmixture(-1, 7, 1, 3, 0.5, 1000, density = "Cauchy")
 #'
-#'
-MCMCmixture <- function(m1, m2, s1, s2, alpha, Nsim,  density = "Normal") {
+MCMCmixture <- function(m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
   m11 <- min(m1, m2)
   m22 <- max(m1, m2)
 
@@ -158,11 +154,10 @@ MCMCmixture <- function(m1, m2, s1, s2, alpha, Nsim,  density = "Normal") {
 
   Z <- do.call("rbind", replicate(n, chain(m11, m1, m2, s1, s2, alpha, Nsim, density), simplify = F))
   R <- Z[, 500]
-  x = min(R)-3:max(R)+3
+  x <- min(R) - 3:max(R) + 3
 
   # histogram of generated values along with the density curve
   graphics::hist(R, breaks = 70, prob = T)
-  graphics::curve(target_density(x, m1, m2, s1, s2, alpha,  density), min(R), max(R), add = TRUE)
+  graphics::curve(target_density(x, m1, m2, s1, s2, alpha, density), min(R), max(R), add = TRUE)
   return(R)
 }
-

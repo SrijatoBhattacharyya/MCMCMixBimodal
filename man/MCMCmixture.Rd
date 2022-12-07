@@ -34,7 +34,6 @@ of the markov chain with stationery distribution as the target distribution and 
 \examples{
 MCMCmixture(1, 10, 2, 3, 0.3, 1000, density = "Normal")
 MCMCmixture(-10, 20, 10, 5, 0.6, 1000, density = "Normal")
-MCMCmixture(-10, 20, 10, 10, 0.5, 1000, density = "Cauchy")
-
+MCMCmixture(-1, 7, 1, 3, 0.5, 1000, density = "Cauchy")
 
 }
