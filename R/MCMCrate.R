@@ -6,10 +6,10 @@
 #' MCMC rate
 #'
 #'
-#' MCMCrate generate 500 Markov Chain values simultaneously
-#' at each iteration of the Algorithm. As its output, it will return the curve of supremum of the absolute
-#' difference between the empirical CDF of the 500 generated values of the chain and the actual CDF of the
-#' target distribution at each iteration.
+#' MCMCrate generate 1000 Markov Chain values simultaneously
+#' at each iteration of the Algorithm and generates Nsim values for each chain. As its output, it will return the Nsim-long vector of supremum of the absolute
+#' difference between the empirical CDF of the 1000 generated values of the chain and the actual CDF of the
+#' target distribution at each iteration. It will also plot these differences.
 #'
 #' @inheritParams target_density
 #' @param Nsim  number of values to be simulated from the mixture distribution
@@ -29,7 +29,7 @@ MCMCrate <- function(m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
 
   Z <- do.call("rbind", replicate(n, chain(m1, m1, m2, s1, s2, alpha, Nsim, density), simplify = F))
 
-  for (j in 1:50)
+  for (j in 1:Nsim)
   {
     P <- Z[, j]
     V <- sort(P)
@@ -56,6 +56,7 @@ MCMCrate <- function(m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
     S[j] <- M
   }
 
-  plot(S)
+  Supnorm = S[1:50]
+  plot(Supnorm)
   return(S)
 }

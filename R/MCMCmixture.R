@@ -85,7 +85,7 @@ target_density <- function(x, m1, m2, s1, s2, alpha, density = "Normal") {
 #'
 chain <- function(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
   if(Nsim <= 50 || Nsim %% 1 != 0){
-    stop("Please resupply positive value of Nsim that is greater than 50 ")
+    stop("Please resupply positive integer value of Nsim that is greater than 50 ")
   }
 
 

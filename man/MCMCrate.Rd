@@ -27,10 +27,10 @@ CDF of the 500 generated values of the chain and the actual CDF of the
 target distribution at each iteration.
 }
 \description{
-MCMCrate generate 500 Markov Chain values simultaneously
-at each iteration of the Algorithm. As its output, it will return the curve of supremum of the absolute
-difference between the empirical CDF of the 500 generated values of the chain and the actual CDF of the
-target distribution at each iteration.
+MCMCrate generate 1000 Markov Chain values simultaneously
+at each iteration of the Algorithm and generates Nsim values for each chain. As its output, it will return the Nsim-long vector of supremum of the absolute
+difference between the empirical CDF of the 1000 generated values of the chain and the actual CDF of the
+target distribution at each iteration. It will also plot these differences.
 }
 \examples{
 MCMCrate(m1 = 20, m2 = 0, s1 = 1, s2 = 2, alpha = 0.5, Nsim = 1000)

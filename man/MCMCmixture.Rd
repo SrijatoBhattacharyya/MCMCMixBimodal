@@ -28,12 +28,13 @@ vector of simulated values from the target distribution
 MCMCmixture function simulate
 random variables from a Univariate Bimodal Gaussian Mixture Distribution. The means and variances of the 2
 Gaussian distributions and the mixing parameter that form the target mixture distribution will be taken
-as input from the user, along with the number of values to be simulated. This function generates 1000 replications
-of the markov chain with stationery distribution as the target distribution and plots the histogram of the values produced.
+as input from the user, along with the iteration number of the Markov Chains to be simulated. This function generates 1000 replications
+of the markov chain with stationery distribution as the target distribution, returns the 1000-long vector of generated values at the Nsim-th
+iteration of each chain and plots the histogram of the values produced.
 }
 \examples{
 MCMCmixture(1, 10, 2, 3, 0.3, 1000, density = "Normal")
-MCMCmixture(-10, 20, 10, 5, 0.6, 1000, density = "Normal")
-MCMCmixture(-1, 7, 1, 3, 0.5, 1000, density = "Cauchy")
+MCMCmixture(-10, 20, 10, 5, 0.6, 2000, density = "Normal")
+MCMCmixture(-1, 7, 1, 3, 0.5, 3000, density = "Cauchy")
 
 }
