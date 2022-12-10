@@ -1,4 +1,4 @@
-testthat::test_that("MCMCmixture test cases", {
+test_that("MCMCmixture test cases", {
 
   #expecting a value
   testthat::expect_length(target_density(x = 8, m1 = 2, m2 = 7, s1 = 2, s2 = 1, alpha = 0.1, density = "Normal"),1)
@@ -11,7 +11,6 @@ testthat::test_that("MCMCmixture test cases", {
 
   #expecting warning message
   testthat::expect_error(target_density(x = 8, m1 = 2, m2 = 7, s1 = 2, s2 = 1, alpha = -5, density = "Normal"))
-
 
   # expecting a vector of length 100
   testthat::expect_length(chain(2, 1, 10, 2, 3, 0.3, 100), 100)

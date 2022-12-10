@@ -1,4 +1,4 @@
-testthat::test_that("MCMCrate works", {
+test_that("MCMCrate works", {
 
   #expect warning message
   testthat::expect_error(MCMCrate(m1 = 20, m2 = 0, s1 = 1, s2 = 2, alpha = 0.5, Nsim = 10))
