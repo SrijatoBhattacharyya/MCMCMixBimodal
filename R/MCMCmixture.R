@@ -21,6 +21,7 @@
 #' @return value of the density function at x
 #' @export
 #'
+
 #'
 #' @examples
 #' target_density(x = 1, m1 = 5, m2 = 0, s1 = 3, s2 = 1, alpha = 0.5)
@@ -77,6 +78,11 @@ target_density <- function(x, m1, m2, s1, s2, alpha, density = "Normal") {
 #'
 #' @return vector of simulated values from the target distribution
 #' @export
+#'
+#' @references
+#'
+#' W.R. Gilks, S. Richardson, and D.J. Spiegelhalter, ed. (1996),
+#' Markov chain Monte Carlo in practice. Chapman and Hall, London.
 #'
 #' @examples
 #' chain(2, 1, 10, 2, 3, 0.3, 1000)
@@ -158,6 +164,11 @@ chain <- function(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
 #'
 #' @return vector of simulated values from the target distribution
 #' @export
+#'
+#'#' @references
+#'
+#' W.R. Gilks, S. Richardson, and D.J. Spiegelhalter, ed. (1996),
+#' Markov chain Monte Carlo in practice. Chapman and Hall, London.
 #'
 #' @examples
 #' MCMCmixture(1, 10, 2, 3, 0.3, 1000, density = "Normal")
