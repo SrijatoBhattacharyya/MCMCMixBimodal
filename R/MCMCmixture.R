@@ -29,26 +29,39 @@
 #' target_density(x = 7, m1 = 5, m2 = 1, s1 = 3, s2 = 2, alpha = 0.3, density = "Cauchy")
 #'
 target_density <- function(x, m1, m2, s1, s2, alpha, density = "Normal") {
+
+  #check that scale parameter of 1st distribution is positive
   if(s1 <= 0 ){
     stop("Scale parameter cannot be non-positive; supply new scale parameter")
   }
+
+  #check that scale parameter of 2nd distribution is positive
   if(s2 <0 ){
     stop("Scale parameter cannot be non-positive; supply new scale parameter")
   }
+
+  #check that the mixing parameter is not greater than 1
   if(alpha > 1 ){
     stop("mixing parameter cannot be greater than 1")
   }
+
+  #check that the mixing parameter is not negative
   if(alpha <0 ){
     stop("mixing parameter cannot be negative")
   }
 
+  #Calculation for density for mixture of Cauchy distributions
   if (density == "Cauchy") {
     W <- alpha * stats::dcauchy(x, m1, s1)
     V <- (1 - alpha) * stats::dcauchy(x, m2, s2)
   } else {
+
+    #Calculation for density for mixture of Normal distributions
     W <- alpha * stats::dnorm(x, m1, s1)
     V <- (1 - alpha) * stats::dnorm(x, m2, s2)
   }
+
+  #retrun the value of density
   return(W + V)
 }
 
@@ -90,14 +103,20 @@ target_density <- function(x, m1, m2, s1, s2, alpha, density = "Normal") {
 #' chain(-3, -2, -4, 2, 2, 0.9, 1000, density = "Cauchy")
 #'
 chain <- function(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
+
+  #Check that Nsim is greater than 50 and that Nsim is a natural number
   if(Nsim <= 50 || Nsim %% 1 != 0){
     stop("Please resupply positive integer value of Nsim that is greater than 50 ")
   }
 
-
+  #Defined vector to store the chain values
   X <- rep(0, Nsim)
+
+  #calculate the minimum of the 2 input location parameters
   m11 <- min(m1, m2)
   m22 <- max(m1, m2)
+
+  #identifying scale parameter of distributions with lower and higher location paramters
   if (m11 == m1) {
     s11 <- s1
     s22 <- s2
@@ -108,7 +127,7 @@ chain <- function(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
 
   X[1] <- t # Initialized the chain
 
-
+  #Running the Chain
   for (i in 2:Nsim)
   {
     # Code for Proposal Density
@@ -127,7 +146,7 @@ chain <- function(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
       Y <- V
     }
 
-
+    #calculating acceptance probability for Metropolis-Hastings Algo
     rho <- target_density(Y, m1, m2, s1, s2, alpha) / target_density(X[i - 1], m1, m2, s1, s2, alpha) # defined the rate parameter for Metropolis Hastings Algorithm
 
     # stored the next iterated value of the chain
@@ -137,6 +156,8 @@ chain <- function(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
       X[i] <- X[i - 1]
     }
   }
+
+  #returned the vector of simulated values
   return(X)
 }
 
@@ -176,18 +197,26 @@ chain <- function(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
 #' MCMCmixture(-1, 7, 1, 3, 0.5, 3000, density = "Cauchy")
 #'
 MCMCmixture <- function(m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
+
+  #calculate the minimum of the 2 input location parameters
   m11 <- min(m1, m2)
   m22 <- max(m1, m2)
 
-  n <- 1000 # declared number of replications of the chain
 
+  # declared number of replications of the chain
+  n <- 1000
 
+  #replicating the chain n times
   Z <- do.call("rbind", replicate(n, chain(m11, m1, m2, s1, s2, alpha, Nsim, density), simplify = F))
+
+  # Collecting the Nsimth values in each chain
   R <- Z[, Nsim]
   x <- min(R) - 3:max(R) + 3
 
   # histogram of generated values along with the density curve
   graphics::hist(R, breaks = 70, prob = T)
   graphics::curve(target_density(x, m1, m2, s1, s2, alpha, density), min(R), max(R), add = TRUE)
+
+  #returning collection of the Nsimth values in each chain
   return(R)
 }
