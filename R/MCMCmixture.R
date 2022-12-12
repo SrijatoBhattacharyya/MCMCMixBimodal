@@ -10,15 +10,15 @@
 #' Gaussian/Cauchy distributions and the mixing parameter are taken as input from the user.
 #'
 #'
-#' @param x     argument value of the density function
-#' @param m1 mean of 1st univariate gaussian distribution or median of 1st cauchy Distribution depending on value of density parameter
-#' @param m2 mean of 2nd univariate gaussian distribution or median of 2nd cauchy Distribution depending on value of density parameter
-#' @param s1  variance of 1st univariate gaussian distribution or scale parameter of 1st Cauchy Distribution depending on value of density parameter
-#' @param s2  variance of 2nd univariate gaussian distribution or scale parameter of 2nd Cauchy Distribution depending on value of density parameter
-#' @param alpha value of mixing parameter
-#' @param density specifies the density function as either Normal or Cauchy
+#' @param x (numeric data type) : argument value of the density function
+#' @param m1 (numeric data type): mean of 1st univariate gaussian distribution or median of 1st cauchy Distribution depending on value of density parameter
+#' @param m2 (numeric data type) : mean of 2nd univariate gaussian distribution or median of 2nd cauchy Distribution depending on value of density parameter
+#' @param s1  (numeric data type) : variance of 1st univariate gaussian distribution or scale parameter of 1st Cauchy Distribution depending on value of density parameter
+#' @param s2  (numeric data type) : variance of 2nd univariate gaussian distribution or scale parameter of 2nd Cauchy Distribution depending on value of density parameter
+#' @param alpha (numeric data type) : value of mixing parameter
+#' @param density (character data type) : specifies the density function as either Normal or Cauchy. Default = "Normal"
 #'
-#' @return value of the density function at x
+#' @return (numeric data type) : value of the density function at x
 #' @export
 #'
 
@@ -84,12 +84,12 @@ target_density <- function(x, m1, m2, s1, s2, alpha, density = "Normal") {
 #'
 #'
 #'
-#' @param t starting value of the chain
+#' @param t (numeric data type) : starting value of the chain
 #' @inheritParams target_density
-#' @param Nsim  number of simulations of Markov Chain having stationery distribution as the target mixture distribution
+#' @param Nsim  (numeric data type) : number of simulations of Markov Chain having stationery distribution as the target mixture distribution
 #'
 #'
-#' @return vector of simulated values from the target distribution
+#' @return vector of length Nsim of simulated values from the target distribution.
 #' @export
 #'
 #' @references
@@ -183,7 +183,7 @@ chain <- function(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
 #' @inheritParams target_density
 #' @param Nsim  number of simulations of Markov Chain having stationery distribution as the target mixture distribution
 #'
-#' @return vector of simulated values from the target distribution
+#' @return vector of length 1000 of simulated values from the target distribution
 #' @export
 #'
 #' @references
