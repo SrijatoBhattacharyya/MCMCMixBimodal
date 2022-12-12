@@ -7,24 +7,24 @@
 chain(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal")
 }
 \arguments{
-\item{t}{starting value of the chain}
+\item{t}{(numeric data type) : starting value of the chain}
 
-\item{m1}{mean of 1st univariate gaussian distribution or median of 1st cauchy Distribution depending on value of density parameter}
+\item{m1}{(numeric data type): mean of 1st univariate gaussian distribution or median of 1st cauchy Distribution depending on value of density parameter}
 
-\item{m2}{mean of 2nd univariate gaussian distribution or median of 2nd cauchy Distribution depending on value of density parameter}
+\item{m2}{(numeric data type) : mean of 2nd univariate gaussian distribution or median of 2nd cauchy Distribution depending on value of density parameter}
 
-\item{s1}{variance of 1st univariate gaussian distribution or scale parameter of 1st Cauchy Distribution depending on value of density parameter}
+\item{s1}{(numeric data type) : variance of 1st univariate gaussian distribution or scale parameter of 1st Cauchy Distribution depending on value of density parameter}
 
-\item{s2}{variance of 2nd univariate gaussian distribution or scale parameter of 2nd Cauchy Distribution depending on value of density parameter}
+\item{s2}{(numeric data type) : variance of 2nd univariate gaussian distribution or scale parameter of 2nd Cauchy Distribution depending on value of density parameter}
 
-\item{alpha}{value of mixing parameter}
+\item{alpha}{(numeric data type) : value of mixing parameter}
 
-\item{Nsim}{number of simulations of Markov Chain having stationery distribution as the target mixture distribution}
+\item{Nsim}{(numeric data type) : number of simulations of Markov Chain having stationery distribution as the target mixture distribution}
 
-\item{density}{specifies the density function as either Normal or Cauchy}
+\item{density}{(character data type) : specifies the density function as either Normal or Cauchy. Default = "Normal"}
 }
 \value{
-vector of simulated values from the target distribution
+vector of length Nsim of simulated values from the target distribution.
 }
 \description{
 chain function simulates random variables from a Markov Chain having stationery distribution as

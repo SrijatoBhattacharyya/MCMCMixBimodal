@@ -2,7 +2,7 @@
 
 ## Introduction
 
-MCMCMixBimodal is a package that allows the user to to generate random variables from from bimodal Densities with highly spaced modes using Metropolis-Hastings Algorithm with a specially customized proposal Density. More specifically, it allows the user to generate random variables from a mixture of two Gaussian Densities by specifying the means and variances of the component normal densities and also the mixing parameter. It also allows the user to study the convergence rate of the algorithm using relevant plots.
+MCMCMixBimodal is a package that allows the user to to generate random variables from from bimodal Densities with highly spaced modes using Metropolis-Hastings Algorithm with a specially customized proposal Density. More specifically, it allows the user to generate random variables from a mixture of two Gaussian/Cauchy Densities by specifying the means/medians and variances/scale parameters of the component normal/ cauchy densities and also the mixing parameter. It also allows the user to study the convergence rate of the algorithm using relevant plots.
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/SrijatoBhattacharyya/MCMCMixBimodal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SrijatoBhattacharyya/MCMCMixBimodal/actions/workflows/R-CMD-check.yaml)

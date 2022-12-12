@@ -7,22 +7,22 @@
 target_density(x, m1, m2, s1, s2, alpha, density = "Normal")
 }
 \arguments{
-\item{x}{argument value of the density function}
+\item{x}{(numeric data type) : argument value of the density function}
 
-\item{m1}{mean of 1st univariate gaussian distribution or median of 1st cauchy Distribution depending on value of density parameter}
+\item{m1}{(numeric data type): mean of 1st univariate gaussian distribution or median of 1st cauchy Distribution depending on value of density parameter}
 
-\item{m2}{mean of 2nd univariate gaussian distribution or median of 2nd cauchy Distribution depending on value of density parameter}
+\item{m2}{(numeric data type) : mean of 2nd univariate gaussian distribution or median of 2nd cauchy Distribution depending on value of density parameter}
 
-\item{s1}{variance of 1st univariate gaussian distribution or scale parameter of 1st Cauchy Distribution depending on value of density parameter}
+\item{s1}{(numeric data type) : variance of 1st univariate gaussian distribution or scale parameter of 1st Cauchy Distribution depending on value of density parameter}
 
-\item{s2}{variance of 2nd univariate gaussian distribution or scale parameter of 2nd Cauchy Distribution depending on value of density parameter}
+\item{s2}{(numeric data type) : variance of 2nd univariate gaussian distribution or scale parameter of 2nd Cauchy Distribution depending on value of density parameter}
 
-\item{alpha}{value of mixing parameter}
+\item{alpha}{(numeric data type) : value of mixing parameter}
 
-\item{density}{specifies the density function as either Normal or Cauchy}
+\item{density}{(character data type) : specifies the density function as either Normal or Cauchy. Default = "Normal"}
 }
 \value{
-value of the density function at x
+(numeric data type) : value of the density function at x
 }
 \description{
 target_density gives the value of the density of a univariate Bimodal Gaussian / Bimodal Cauchy Mixture Distribution. The means/medians and variances/scale parameters of the 2
