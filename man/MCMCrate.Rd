@@ -17,23 +17,28 @@ MCMCrate(m1, m2, s1, s2, alpha, Nsim, density = "Normal")
 
 \item{alpha}{value of mixing parameter}
 
-\item{Nsim}{number of values to be simulated from the mixture distribution}
+\item{Nsim}{number of simulations of Markov Chain having stationery distribution as the target mixture distribution}
 
 \item{density}{specifies the density function as either Normal or Cauchy}
 }
 \value{
-vector of supremum of the absolute difference between the empirical
-CDF of the 500 generated values of the chain and the actual CDF of the
+Nsim-long vector of supremum of the absolute difference between the empirical
+CDF of the 1000 generated values of the chain and the actual CDF of the
 target distribution at each iteration.
 }
 \description{
-MCMCrate generate 1000 Markov Chain values simultaneously
-at each iteration of the Algorithm and generates Nsim values for each chain. As its output, it will return the Nsim-long vector of supremum of the absolute
+MCMCrate generates 1000 Markov Chain values simultaneously
+at each iteration of the Algorithm. These chains have stationery distribution
+same as the target mixture distribution. This function generates Nsim values for each chain. As its output, it will return the Nsim-long vector of supremum of the absolute
 difference between the empirical CDF of the 1000 generated values of the chain and the actual CDF of the
-target distribution at each iteration. It will also plot these differences.
+target distribution at each iteration. It will also plot these differences for the first 50 iterations.
 }
 \examples{
 MCMCrate(m1 = 20, m2 = 0, s1 = 1, s2 = 2, alpha = 0.5, Nsim = 1000)
 MCMCrate(m1 = 10, m2 = 0, s1 = 2, s2 = 4, alpha = 0.5, Nsim = 1000, density = "Cauchy")
 
+}
+\references{
+W.R. Gilks, S. Richardson, and D.J. Spiegelhalter, ed. (1996),
+Markov chain Monte Carlo in practice. Chapman and Hall, London.
 }

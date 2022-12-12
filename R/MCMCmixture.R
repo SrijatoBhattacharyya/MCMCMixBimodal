@@ -186,7 +186,7 @@ chain <- function(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
 #' @return vector of simulated values from the target distribution
 #' @export
 #'
-#'#' @references
+#' @references
 #'
 #' W.R. Gilks, S. Richardson, and D.J. Spiegelhalter, ed. (1996),
 #' Markov chain Monte Carlo in practice. Chapman and Hall, London.

@@ -17,7 +17,7 @@ MCMCmixture(m1, m2, s1, s2, alpha, Nsim, density = "Normal")
 
 \item{alpha}{value of mixing parameter}
 
-\item{Nsim}{number of values to be simulated from the mixture distribution}
+\item{Nsim}{number of simulations of Markov Chain having stationery distribution as the target mixture distribution}
 
 \item{density}{specifies the density function as either Normal or Cauchy}
 }
@@ -25,9 +25,9 @@ MCMCmixture(m1, m2, s1, s2, alpha, Nsim, density = "Normal")
 vector of simulated values from the target distribution
 }
 \description{
-MCMCmixture function simulate
-random variables from a Univariate Bimodal Gaussian Mixture Distribution. The means and variances of the 2
-Gaussian distributions and the mixing parameter that form the target mixture distribution will be taken
+MCMCmixture function simulates
+random variables from a Univariate Bimodal Gaussian/Cauchy Mixture Distribution. The means/medians and variances/scale parameters of the 2
+Gaussian/Cauchy distributions and the mixing parameter that form the target mixture distribution will be taken
 as input from the user, along with the iteration number of the Markov Chains to be simulated. This function generates 1000 replications
 of the markov chain with stationery distribution as the target distribution, returns the 1000-long vector of generated values at the Nsim-th
 iteration of each chain and plots the histogram of the values produced.
@@ -37,4 +37,8 @@ MCMCmixture(1, 10, 2, 3, 0.3, 1000, density = "Normal")
 MCMCmixture(-10, 20, 10, 5, 0.6, 2000, density = "Normal")
 MCMCmixture(-1, 7, 1, 3, 0.5, 3000, density = "Cauchy")
 
+}
+\references{
+W.R. Gilks, S. Richardson, and D.J. Spiegelhalter, ed. (1996),
+Markov chain Monte Carlo in practice. Chapman and Hall, London.
 }

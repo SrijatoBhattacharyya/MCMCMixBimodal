@@ -20,7 +20,7 @@
 #' target distribution at each iteration.
 #' @export
 #'
-#'#' @references
+#' @references
 #'
 #' W.R. Gilks, S. Richardson, and D.J. Spiegelhalter, ed. (1996),
 #' Markov chain Monte Carlo in practice. Chapman and Hall, London.

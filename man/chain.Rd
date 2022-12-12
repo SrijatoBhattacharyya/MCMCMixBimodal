@@ -19,7 +19,7 @@ chain(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal")
 
 \item{alpha}{value of mixing parameter}
 
-\item{Nsim}{number of values to be simulated from the mixture distribution}
+\item{Nsim}{number of simulations of Markov Chain having stationery distribution as the target mixture distribution}
 
 \item{density}{specifies the density function as either Normal or Cauchy}
 }
@@ -27,9 +27,9 @@ chain(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal")
 vector of simulated values from the target distribution
 }
 \description{
-chain simulates random variables from a Markov Chain having stationery distribution as
-a univariate Bimodal Gaussian Mixture Distribution. The means and variances of the 2
-Gaussian distributions and the mixing parameter that form the target mixture distribution will be taken
+chain function simulates random variables from a Markov Chain having stationery distribution as
+a univariate Bimodal Gaussian/Cauchy Mixture Distribution. The means/medians and variances/scale parameters of the 2
+Gaussian/Cauchy distributions and the mixing parameter that form the target mixture distribution will be taken
 as input from the user, along with the number of values to be simulated. The function returns
 the values generated from the chain
 }
@@ -38,4 +38,8 @@ chain(2, 1, 10, 2, 3, 0.3, 1000)
 chain(5, 4, 3, 3, 3, 0.5, 1000)
 chain(-3, -2, -4, 2, 2, 0.9, 1000, density = "Cauchy")
 
+}
+\references{
+W.R. Gilks, S. Richardson, and D.J. Spiegelhalter, ed. (1996),
+Markov chain Monte Carlo in practice. Chapman and Hall, London.
 }
