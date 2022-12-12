@@ -1,6 +1,6 @@
 Package: MCMCMixBimodal
 Title: : MCMC for Bimodal Mixture of Two Univariate Dstributions
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: 
     person("Srijato", "Bhattacharyya", email = "srijato@tamu.edu", role = c("aut", "cre"))
 Description: MCMCixBimodal simulates random variables from a Univariate Gaussian/Cauchy Mixture Distribution. 
