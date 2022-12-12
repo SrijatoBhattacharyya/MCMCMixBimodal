@@ -76,9 +76,9 @@ target_density <- function(x, m1, m2, s1, s2, alpha, density = "Normal") {
 
 #' chain
 #'
-#' chain simulates random variables from a Markov Chain having stationery distribution as
-#' a univariate Bimodal Gaussian Mixture Distribution. The means and variances of the 2
-#' Gaussian distributions and the mixing parameter that form the target mixture distribution will be taken
+#' chain function simulates random variables from a Markov Chain having stationery distribution as
+#' a univariate Bimodal Gaussian/Cauchy Mixture Distribution. The means/medians and variances/scale parameters of the 2
+#' Gaussian/Cauchy distributions and the mixing parameter that form the target mixture distribution will be taken
 #' as input from the user, along with the number of values to be simulated. The function returns
 #' the values generated from the chain
 #'
@@ -86,7 +86,7 @@ target_density <- function(x, m1, m2, s1, s2, alpha, density = "Normal") {
 #'
 #' @param t starting value of the chain
 #' @inheritParams target_density
-#' @param Nsim  number of values to be simulated from the mixture distribution
+#' @param Nsim  number of simulations of Markov Chain having stationery distribution as the target mixture distribution
 #'
 #'
 #' @return vector of simulated values from the target distribution
@@ -172,16 +172,16 @@ chain <- function(t, m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
 
 #' MCMC mixture
 #'
-#' MCMCmixture function simulate
-#' random variables from a Univariate Bimodal Gaussian Mixture Distribution. The means and variances of the 2
-#' Gaussian distributions and the mixing parameter that form the target mixture distribution will be taken
+#' MCMCmixture function simulates
+#' random variables from a Univariate Bimodal Gaussian/Cauchy Mixture Distribution. The means/medians and variances/scale parameters of the 2
+#' Gaussian/Cauchy distributions and the mixing parameter that form the target mixture distribution will be taken
 #' as input from the user, along with the iteration number of the Markov Chains to be simulated. This function generates 1000 replications
 #' of the markov chain with stationery distribution as the target distribution, returns the 1000-long vector of generated values at the Nsim-th
 #' iteration of each chain and plots the histogram of the values produced.
 #'
 #'
 #' @inheritParams target_density
-#' @param Nsim  number of values to be simulated from the mixture distribution
+#' @param Nsim  number of simulations of Markov Chain having stationery distribution as the target mixture distribution
 #'
 #' @return vector of simulated values from the target distribution
 #' @export
@@ -210,13 +210,13 @@ MCMCmixture <- function(m1, m2, s1, s2, alpha, Nsim, density = "Normal") {
   Z <- do.call("rbind", replicate(n, chain(m11, m1, m2, s1, s2, alpha, Nsim, density), simplify = F))
 
   # Collecting the Nsimth values in each chain
-  R <- Z[, Nsim]
-  x <- min(R) - 3:max(R) + 3
+  Value <- Z[, Nsim]
+  x <- min(Value) - 3:max(Value) + 3
 
   # histogram of generated values along with the density curve
-  graphics::hist(R, breaks = 70, prob = T)
-  graphics::curve(target_density(x, m1, m2, s1, s2, alpha, density), min(R), max(R), add = TRUE)
+  graphics::hist(Value, breaks = 70, prob = T, main = paste("Histogram of simulated values") )
+  graphics::curve(target_density(x, m1, m2, s1, s2, alpha, density), min(Value), max(Value), add = TRUE)
 
   #returning collection of the Nsimth values in each chain
-  return(R)
+  return(Value)
 }

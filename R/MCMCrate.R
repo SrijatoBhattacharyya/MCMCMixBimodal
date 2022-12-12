@@ -6,16 +6,17 @@
 #' MCMC rate
 #'
 #'
-#' MCMCrate generate 1000 Markov Chain values simultaneously
-#' at each iteration of the Algorithm and generates Nsim values for each chain. As its output, it will return the Nsim-long vector of supremum of the absolute
+#' MCMCrate generates 1000 Markov Chain values simultaneously
+#' at each iteration of the Algorithm. These chains have stationery distribution
+#' same as the target mixture distribution. This function generates Nsim values for each chain. As its output, it will return the Nsim-long vector of supremum of the absolute
 #' difference between the empirical CDF of the 1000 generated values of the chain and the actual CDF of the
-#' target distribution at each iteration. It will also plot these differences.
+#' target distribution at each iteration. It will also plot these differences for the first 50 iterations.
 #'
 #' @inheritParams target_density
-#' @param Nsim  number of values to be simulated from the mixture distribution
+#' @param Nsim  number of simulations of Markov Chain having stationery distribution as the target mixture distribution
 #'
-#' @return vector of supremum of the absolute difference between the empirical
-#' CDF of the 500 generated values of the chain and the actual CDF of the
+#' @return Nsim-long vector of supremum of the absolute difference between the empirical
+#' CDF of the 1000 generated values of the chain and the actual CDF of the
 #' target distribution at each iteration.
 #' @export
 #'
