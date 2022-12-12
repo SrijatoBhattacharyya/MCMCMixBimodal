@@ -40,9 +40,7 @@ MCMCmixture(1, 10, 2, 3, 0.3, 1000, density = "Normal")
 The histogram of the generated samples:
 <img src="man/figures/README-histogram.png" width="100%"/>
 
-``` r
-MCMCmixture(1, 10, 2, 3, 0.3, 1000, density = "Cauchy")
-```
+
 MCMCrate generates 1000 Markov Chain values simultaneously
 at each iteration of the Algorithm. These chains have stationery distribution
 same as the target mixture distribution and takes same set of inputs as the MCMCmixture function. This function generates Nsim values for each chain. As its output, it will return the Nsim-long vector of supremum of the absolute difference between the empirical CDF of the 1000 generated values of the chain and the actual CDF of the target distribution at each iteration. It will also plot these differences for the first 50 iterations.
@@ -52,12 +50,10 @@ same as the target mixture distribution and takes same set of inputs as the MCMC
 MCMCrate(m1 = 20, m2 = 0, s1 = 1, s2 = 2, alpha = 0.5, Nsim = 1000)
 ```
 
-The histogram plot of the samples:
+The supnorm plot of the absolute differences:
 <img src="man/figures/README-curve.png" width="100%"/>
 
-``` r
-MCMCrate(m1 = 10, m2 = 0, s1 = 2, s2 = 4, alpha = 0.5, Nsim = 1000, density = "Cauchy")
-```
+
 
 ## References
 
